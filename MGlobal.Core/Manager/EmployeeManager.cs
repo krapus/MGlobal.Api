@@ -27,7 +27,9 @@ namespace MGlobal.Core.Manager
 
         public async Task<EmployeeDTO> GetEmployeeById(int id)
         {
-            return _employeeDtoManager.CreateEmployeeDTO(await _employeeClientService.GetEmployee(id));
+            var r = await _employeeClientService.GetEmployee(id);
+            var result = _employeeDtoManager.CreateEmployeeDTO(r);
+            return result;
         }
     }
 }
